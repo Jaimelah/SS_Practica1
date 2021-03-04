@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.unican.es/ss/practica1Banco"
+	xmlns="http://www.unican.es/ss/practica1Banco"
+	elementFormDefault="qualified">
+
+	<xs:complexType name="Valor">
+		<xs:attribute name="nombreEntidad" type="xs:string"
+			use="required" />
+		<xs:attribute name="numeroAcciones" type="xs:integer"
+			use="required" />
+		<xs:attribute name="ultimoValorCotizado" type="xs:double"
+			use="required" />
+	</xs:complexType>
+
+	<xs:simpleType name="dni">
+		<xs:restriction base="xs:string">
+			<xs:length value="10" />
+			<xs:pattern
+				value="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="tipoCuentaAhorro">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Oro" />
+			<xs:enumeration value="Joven" />
+			<xs:enumeration value="Normal" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="numeroCuenta">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="\d{20,20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="cvc">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="\d{3,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:complexType name="ProductoBancario" abstract="true">
+		<!--  <xs:attribute name="idProductoBancario" type="xs:ID" use="required"/>-->
+	</xs:complexType>
+
+	<xs:complexType name="CuentaAhorro">
+		<xs:complexContent>
+			<xs:extension base="ProductoBancario">
+				<xs:attribute name="numeroCuenta" type="numeroCuenta"
+					use="required" />
+				<xs:attribute name="fechaApertura" type="xs:date"
+					use="required" />
+				<xs:attribute name="saldo" type="xs:double" use="required"/>
+				<xs:attribute name="tipo" type="tipoCuentaAhorro" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="CuentaValores">
+		<xs:complexContent>
+			<xs:extension base="ProductoBancario">
+				<xs:attribute name="accionesEnBolsa" type="xs:integer" use="required"/>
+				<xs:attribute name="fechaApertura" type="xs:date" use="required"/>
+				<xs:attribute name="numeroCuenta" type="numeroCuenta" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DepositoPlazoFijo">
+		<xs:complexContent>
+			<xs:extension base="ProductoBancario">
+				<xs:attribute name="importeDepositado" type="xs:double" use="required" />
+				<xs:attribute name="tipoInteres" type="xs:string" use="required"/>
+				<xs:attribute name="fechaVencimiento" type="xs:date" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Tarjeta">
+		<xs:complexContent>
+			<xs:extension base="ProductoBancario">
+				<xs:attribute name="numeroTarjeta" type="xs:integer" use="required" />
+				<xs:attribute name="fechaCaducidad" type="xs:date" use="required" />
+				<xs:attribute name="CVC" type="cvc" use="required"/>
+				<xs:attribute name="numeroCuenta" type="numeroCuenta" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Cliente">
+		<xs:sequence>
+			<xs:element name="producto" type="ProductoBancario"
+				maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="nombre" type="xs:string"
+			use="required" />
+		<xs:attribute name="apellido1" type="xs:string"
+			use="required" />
+		<xs:attribute name="apellido2" type="xs:string"/>
+		<xs:attribute name="DNI" type="dni" use="required" />
+	</xs:complexType>
+
+
+
+	<xs:element name="Banco">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cliente" type="Cliente"
+					maxOccurs="unbounded" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>			
