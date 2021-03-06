@@ -4,12 +4,24 @@
 	xsi:schemaLocation="http://www.unican.es/ss/practica1Banco practica1.xsd ">
 
 
-<p:cliente apellido1="q" DNI="111111111A" nombre="n" apellido2="q">
-	<p:producto xsi:type="p:CuentaAhorro"  fechaApertura="2020-01-02" numeroCuenta="12345678901234567891" saldo="1" tipo="Oro"/>
-	<p:producto xsi:type="p:CuentaValores" accionesEnBolsa="100" fechaApertura="2020-01-02" numeroCuenta="10101010101010101010"/>
-	<p:producto xsi:type="p:DepositoPlazoFijo" fechaVencimiento="2020-01-10" importeDepositado="100" tipoInteres="interes1"/>
-	<p:producto xsi:type="p:Tarjeta" CVC="111" fechaCaducidad="2020-10-10" numeroCuenta="10101010101010101010" numeroTarjeta="1231231231313"/>
-</p:cliente>
+	<p:cliente apellido1="q" DNI="111111111A" nombre="n"
+		apellido2="q">
+		<p:producto xsi:type="p:CuentaAhorro" idProductoBancario="A"
+			fechaApertura="2020-01-02" numeroCuenta="12345678901234567891"
+			saldo="1" tipo="Oro" />
+		<p:producto xsi:type="p:CuentaValores" idProductoBancario="B"
+			accionesEnBolsa="100" fechaApertura="2020-01-02"
+			numeroCuenta="10101010101010101010">
+			<p:valorCuenta numeroAcciones="1" nombreEntidad="E"
+				ultimoValorCotizado="10" />
+		</p:producto>
+		<p:producto xsi:type="p:DepositoPlazoFijo" idProductoBancario="C"
+			fechaVencimiento="2020-01-10" importeDepositado="100"
+			tipoInteres="interes1" />
+		<p:producto xsi:type="p:Tarjeta" CVC="111" idProductoBancario="D"
+			fechaCaducidad="2020-10-10" numeroCuenta="10101010101010101010"
+			numeroTarjeta="1231231231313" refCuentaAhorro="A"/>
+	</p:cliente>
 
 
 </p:Banco>
