@@ -6,6 +6,9 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlSchemaType;
 @XmlAccessorType(XmlAccessType.NONE)
 public class Tarjeta extends ProductoBancario implements Serializable{
 
@@ -21,15 +24,23 @@ public class Tarjeta extends ProductoBancario implements Serializable{
 	protected int cvc;
 	@XmlAttribute(name="numeroCuenta", required=true)
 	protected int numeroCuenta;
+	@XmlIDREF
+	@XmlAttribute(name = "refCuentaAhorro", required = true)
+	@XmlSchemaType(name = "IDREF")
+	protected CuentaAhorro refCuentaAhorro;
 	
 	public Tarjeta() {
 	}
-	public Tarjeta(int numeroTarjeta, Date fechaCaducidad, int cvc, int numeroCuenta) {
+
+	public Tarjeta(int numeroTarjeta, Date fechaCaducidad, int cvc, int numeroCuenta, CuentaAhorro refCuentaAhorro) {
 		this.numeroTarjeta = numeroTarjeta;
 		this.fechaCaducidad = fechaCaducidad;
 		this.cvc = cvc;
 		this.numeroCuenta = numeroCuenta;
+		this.refCuentaAhorro = refCuentaAhorro;
 	}
+
+
 	public int getNumeroTarjeta() {
 		return numeroTarjeta;
 	}
@@ -54,10 +65,13 @@ public class Tarjeta extends ProductoBancario implements Serializable{
 	public void setNumeroCuenta(int numeroCuenta) {
 		this.numeroCuenta = numeroCuenta;
 	}
-	
-	
-	
-	
-	
 
+	public CuentaAhorro getRefCuentaAhorro() {
+		return refCuentaAhorro;
+	}
+
+	public void setRefCuentaAhorro(CuentaAhorro refCuentaAhorro) {
+		this.refCuentaAhorro = refCuentaAhorro;
+	}
+	
 }

@@ -5,6 +5,7 @@
 
   <xs:complexType name="productoBancario" abstract="true">
     <xs:sequence/>
+    <xs:attribute name="idPorductoBancario" type="xs:ID" use="required"/>
   </xs:complexType>
 
   <xs:complexType name="depositoPlazoFijo">
@@ -46,6 +47,7 @@
         <xs:attribute name="fechaCaducidad" type="xs:dateTime" use="required"/>
         <xs:attribute name="cvc" type="xs:int" use="required"/>
         <xs:attribute name="numeroCuenta" type="xs:int" use="required"/>
+        <xs:attribute name="refCuentaAhorro" type="xs:IDREF" use="required"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

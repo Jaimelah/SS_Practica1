@@ -121,7 +121,6 @@
 		<xs:attribute name="apellido2" type="xs:string" />
 		<xs:attribute name="DNI" type="dni" use="required" />
 	</xs:complexType>
-
 	<xs:element name="Banco">
 		<xs:complexType>
 			<xs:sequence>
@@ -129,6 +128,10 @@
 					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
+		<xs:unique name="unique-dni" >
+			<xs:selector xpath="cliente" /> 
+			<xs:field xpath="@DNI"/>
+		</xs:unique>
 	</xs:element>
 
 </xs:schema>			
