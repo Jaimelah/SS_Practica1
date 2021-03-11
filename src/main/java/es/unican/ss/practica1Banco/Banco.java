@@ -1,7 +1,7 @@
 package es.unican.ss.practica1Banco;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -20,6 +20,7 @@ public class Banco implements Serializable{
 	protected List<Cliente>clientes;
 	
 	public Banco() {
+		clientes=new ArrayList<>();
 	}
 	public Banco(List<Cliente> clientes) {
 		this.clientes = clientes;

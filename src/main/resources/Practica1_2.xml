@@ -6,7 +6,7 @@
 		apellido2="q">
 		<p:producto xsi:type="p:CuentaAhorro"
 			idProductoBancario="A" fechaApertura="2020-01-02"
-			numeroCuenta="12345678901234567891" saldo="1" tipo="Oro" />
+			numeroCuenta="12345678901234567891" saldo="1.0" tipo="Oro" />
 		<p:producto xsi:type="p:CuentaValores"
 			idProductoBancario="B" accionesEnBolsa="100"
 			fechaApertura="2020-01-02" numeroCuenta="10101010101010101010">

@@ -14,7 +14,7 @@ public class CuentaAhorro extends ProductoBancario implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@XmlAttribute(name="numeroCuenta", required=true)
-	protected int numeroCuenta;
+	protected long numeroCuenta;
 	@XmlAttribute(name="fechaApertura", required=true)
 	protected Date fechaApertura;
 	@XmlAttribute(name="saldo", required = true)
@@ -26,18 +26,18 @@ public class CuentaAhorro extends ProductoBancario implements Serializable{
 		super();
 	}
 
-	public CuentaAhorro(int numeroCuenta, Date fechaApertura, double saldo, TipoCuentaAhorro tipo) {
+	public CuentaAhorro(long numeroCuenta, Date fechaApertura, double saldo, TipoCuentaAhorro tipo) {
 		this.numeroCuenta = numeroCuenta;
 		this.fechaApertura = fechaApertura;
 		this.saldo = saldo;
 		this.tipo = tipo;
 	}
 
-	public int getNumeroCuenta() {
+	public long getNumeroCuenta() {
 		return numeroCuenta;
 	}
 
-	public void setNumeroCuenta(int numeroCuenta) {
+	public void setNumeroCuenta(long numeroCuenta) {
 		this.numeroCuenta = numeroCuenta;
 	}
 

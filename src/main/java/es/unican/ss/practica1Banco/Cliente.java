@@ -1,10 +1,13 @@
 package es.unican.ss.practica1Banco;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 @XmlAccessorType(XmlAccessType.NONE)
 public class Cliente implements Serializable{
 
@@ -21,9 +24,12 @@ public class Cliente implements Serializable{
 	protected String apellido2;
 	@XmlAttribute(name="dni", required= true)
 	protected String dni;
-	
+
+	@XmlElement(name="producto", required=true)
+	protected List<ProductoBancario>productos;
 	
 	public Cliente() {
+		this.productos=new ArrayList<>();
 	}
 
 	public Cliente(String nombre, String apellido1, String apellido2, String dni) {
@@ -31,6 +37,7 @@ public class Cliente implements Serializable{
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.dni = dni;
+		this.productos=new ArrayList<>();
 	}
 
 	public String getNombre() {
@@ -64,6 +71,16 @@ public class Cliente implements Serializable{
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+
+	public List<ProductoBancario> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<ProductoBancario> productos) {
+		this.productos = productos;
+	}
+	
+	
 	
 	
 	
