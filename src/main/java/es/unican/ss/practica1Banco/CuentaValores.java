@@ -1,6 +1,7 @@
 package es.unican.ss.practica1Banco;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,28 +16,20 @@ public class CuentaValores extends ProductoBancario implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@XmlAttribute(name="accionesEnBolsa", required=true)
-	protected int accionesEnBolsa;
 	@XmlAttribute(name="fechaApertura", required=true)
 	protected Date fechaApertura;
 	@XmlAttribute(name="numeroCuenta", required=true)
-	protected int numeroCuenta;
+	protected String numeroCuenta;
 	@XmlElement(name = "valor", required = true)
 	protected List<Valor>valores;
 		
 	public CuentaValores() {
+		valores=new ArrayList<Valor>();
 	}
-	public CuentaValores(int accionesEnBolsa, Date fechaApertura, int numeroCuenta, List<Valor> valores) {
-		this.accionesEnBolsa = accionesEnBolsa;
+	public CuentaValores( Date fechaApertura, String numeroCuenta, List<Valor> valores) {
 		this.fechaApertura = fechaApertura;
 		this.numeroCuenta = numeroCuenta;
 		this.valores = valores;
-	}
-	public int getAccionesEnBolsa() {
-		return accionesEnBolsa;
-	}
-	public void setAccionesEnBolsa(int accionesEnBolsa) {
-		this.accionesEnBolsa = accionesEnBolsa;
 	}
 	public Date getFechaApertura() {
 		return fechaApertura;
@@ -44,10 +37,10 @@ public class CuentaValores extends ProductoBancario implements Serializable{
 	public void setFechaApertura(Date fechaApertura) {
 		this.fechaApertura = fechaApertura;
 	}
-	public int getNumeroCuenta() {
+	public String getNumeroCuenta() {
 		return numeroCuenta;
 	}
-	public void setNumeroCuenta(int numeroCuenta) {
+	public void setNumeroCuenta(String numeroCuenta) {
 		this.numeroCuenta = numeroCuenta;
 	}
 	public List<Valor> getValores() {
@@ -56,8 +49,9 @@ public class CuentaValores extends ProductoBancario implements Serializable{
 	public void setValores(List<Valor> valores) {
 		this.valores = valores;
 	}
-	
-	
-	
-
+	@Override
+	public String toString() {
+		return "\nCuentaValores [fechaApertura=" + fechaApertura
+				+ ", numeroCuenta=" + numeroCuenta + ", valores=" + valores + "]";
+	}
 }

@@ -47,9 +47,11 @@ public class Valor implements Serializable{
 	public void setUltimoValorCotizado(double ultimoValorCotizado) {
 		this.ultimoValorCotizado = ultimoValorCotizado;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Valor [nombreEntidad=" + nombreEntidad + ", numeroAcciones=" + numeroAcciones + ", ultimoValorCotizado="
+				+ ultimoValorCotizado + "]";
+	}
 	
 }

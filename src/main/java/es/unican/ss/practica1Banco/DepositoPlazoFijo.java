@@ -26,7 +26,28 @@ public class DepositoPlazoFijo extends ProductoBancario implements Serializable 
 		this.tipoInteres = tipoInteres;
 		this.fechaVencimiento = fechaVencimiento;
 	}
+	public double getImporteDepositado() {
+		return importeDepositado;
+	}
+	public void setImporteDepositado(double importeDepositado) {
+		this.importeDepositado = importeDepositado;
+	}
+	public String getTipoInteres() {
+		return tipoInteres;
+	}
+	public void setTipoInteres(String tipoInteres) {
+		this.tipoInteres = tipoInteres;
+	}
+	public Date getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+	@Override
+	public String toString() {
+		return "\nDepositoPlazoFijo [importeDepositado=" + importeDepositado + ", tipoInteres=" + tipoInteres
+				+ ", fechaVencimiento=" + fechaVencimiento + "]";
+	}
 	
-	
-
 }

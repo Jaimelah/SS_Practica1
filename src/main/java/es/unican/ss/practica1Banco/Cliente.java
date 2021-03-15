@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
 @XmlAccessorType(XmlAccessType.NONE)
 public class Cliente implements Serializable{
 
@@ -15,7 +16,9 @@ public class Cliente implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	@XmlID
+	@XmlAttribute(name="idUsuario", required=true)
+	protected String idUsuario;
 	@XmlAttribute(name="nombre", required = true)
 	protected String nombre;
 	@XmlAttribute(name = "apellido1", required = true)
@@ -24,7 +27,6 @@ public class Cliente implements Serializable{
 	protected String apellido2;
 	@XmlAttribute(name="dni", required= true)
 	protected String dni;
-
 	@XmlElement(name="producto", required=true)
 	protected List<ProductoBancario>productos;
 	
@@ -32,7 +34,8 @@ public class Cliente implements Serializable{
 		this.productos=new ArrayList<>();
 	}
 
-	public Cliente(String nombre, String apellido1, String apellido2, String dni) {
+	public Cliente(String idUsuario, String nombre, String apellido1, String apellido2, String dni) {
+		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
@@ -79,10 +82,19 @@ public class Cliente implements Serializable{
 	public void setProductos(List<ProductoBancario> productos) {
 		this.productos = productos;
 	}
-	
-	
-	
-	
-	
 
+	public String getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(String idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2="
+				+ apellido2 + ", dni=" + dni + ", productos=" + productos + "]";
+	}
+	
 }

@@ -14,7 +14,7 @@ public abstract class ProductoBancario implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@XmlID
-	@XmlAttribute(name="idPorductoBancario", required = true)
+	@XmlAttribute(name="idProductoBancario", required = true)
 	protected String idProductoBancario;
 
 }

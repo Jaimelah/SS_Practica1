@@ -1,6 +1,6 @@
 package es.unican.ss.practica1Banco;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +30,29 @@ public class Banco implements Serializable{
 	}
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
+	}
+	@Override
+	public String toString() {
+		String txt="Banco: \n";
+		for(Cliente c : clientes) {
+			txt+=c.getDni();
+			Double saldoTotal=0.0;
+			for(ProductoBancario p : c.getProductos()) {
+				if(p instanceof CuentaAhorro) {
+					saldoTotal+=((CuentaAhorro) p).getSaldo();
+				}else if (p instanceof DepositoPlazoFijo) {
+					saldoTotal+=((DepositoPlazoFijo) p).getImporteDepositado();
+				}else if(p instanceof CuentaValores) {
+					Double saldoCuentaValores=0.0;
+					for(Valor v: ((CuentaValores) p).getValores()) {
+						saldoCuentaValores+=(v.getNumeroAcciones()*v.getUltimoValorCotizado());
+					}
+					saldoTotal+=saldoCuentaValores;
+				}else {}
+			}
+			txt+=" "+saldoTotal+"\n";
+		}
+		return txt;
 	}
 	
 

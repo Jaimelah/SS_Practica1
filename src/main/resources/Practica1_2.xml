@@ -2,13 +2,13 @@
 <p:Banco xmlns:p="http://www.unican.es/ss/practica1Banco"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.unican.es/ss/practica1Banco practica1.xsd ">
-	<p:cliente apellido1="q" DNI="111111111A" nombre="n"
+	<p:cliente idUsuario="user1" apellido1="q" DNI="111111111A" nombre="n"
 		apellido2="q">
 		<p:producto xsi:type="p:CuentaAhorro"
 			idProductoBancario="A" fechaApertura="2020-01-02"
 			numeroCuenta="12345678901234567891" saldo="1.0" tipo="Oro" />
 		<p:producto xsi:type="p:CuentaValores"
-			idProductoBancario="B" accionesEnBolsa="100"
+			idProductoBancario="B" 
 			fechaApertura="2020-01-02" numeroCuenta="10101010101010101010">
 			<p:valorCuenta numeroAcciones="1" nombreEntidad="E"
 				ultimoValorCotizado="10" />
@@ -18,18 +18,18 @@
 			importeDepositado="100" tipoInteres="interes1" />
 		<p:producto xsi:type="p:Tarjeta" CVC="111"
 			idProductoBancario="D" fechaCaducidad="2020-10-10"
-			numeroCuenta="10101010101010101010" numeroTarjeta="1231231231313"
+			numeroCuenta="12345678901234567891" numeroTarjeta="1231231231231313"
 			refCuentaAhorro="A" />
 	</p:cliente>
-	<p:cliente apellido1="q" DNI="111111111A" nombre="n"
+	<p:cliente idUsuario="user2" apellido1="q" DNI="111111111A" nombre="n"
 		apellido2="q">
 		<p:producto xsi:type="p:CuentaAhorro"
 			idProductoBancario="Z" fechaApertura="2020-01-02"
 			numeroCuenta="12345678901234567891" saldo="1" tipo="Oro" />
 		<p:producto xsi:type="p:CuentaValores"
-			idProductoBancario="qw" accionesEnBolsa="100"
+			idProductoBancario="qw" 
 			fechaApertura="2020-01-02" numeroCuenta="10101010101010101010">
-			<p:valorCuenta numeroAcciones="1" nombreEntidad="E"
+			<p:valorCuenta numeroAcciones="2" nombreEntidad="E"
 				ultimoValorCotizado="10" />
 		</p:producto>
 		<p:producto xsi:type="p:DepositoPlazoFijo"
@@ -37,7 +37,7 @@
 			importeDepositado="100" tipoInteres="interes1" />
 		<p:producto xsi:type="p:Tarjeta" CVC="111"
 			idProductoBancario="Dqweq" fechaCaducidad="2020-10-10"
-			numeroCuenta="10101010101010101010" numeroTarjeta="1231231231313"
+			numeroCuenta="12345678901234567891" numeroTarjeta="1231231231313121"
 			refCuentaAhorro="A" />
 	</p:cliente>
 </p:Banco>

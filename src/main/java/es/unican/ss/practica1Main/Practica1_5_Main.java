@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 
 import es.unican.ss.practica1Parser.BancoCustomHandler;
 
-public class Practica1_Main {
+public class Practica1_5_Main {
 
 	public static void main(String[]args) {
 		try {

@@ -5,7 +5,7 @@
 
   <xs:complexType name="productoBancario" abstract="true">
     <xs:sequence/>
-    <xs:attribute name="idPorductoBancario" type="xs:ID" use="required"/>
+    <xs:attribute name="idProductoBancario" type="xs:ID" use="required"/>
   </xs:complexType>
 
   <xs:complexType name="depositoPlazoFijo">
@@ -27,7 +27,7 @@
         </xs:sequence>
         <xs:attribute name="accionesEnBolsa" type="xs:int" use="required"/>
         <xs:attribute name="fechaApertura" type="xs:dateTime" use="required"/>
-        <xs:attribute name="numeroCuenta" type="xs:int" use="required"/>
+        <xs:attribute name="numeroCuenta" type="xs:string" use="required"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -43,10 +43,10 @@
     <xs:complexContent>
       <xs:extension base="tns:productoBancario">
         <xs:sequence/>
-        <xs:attribute name="numeroTarjeta" type="xs:int" use="required"/>
+        <xs:attribute name="numeroTarjeta" type="xs:string" use="required"/>
         <xs:attribute name="fechaCaducidad" type="xs:dateTime" use="required"/>
         <xs:attribute name="cvc" type="xs:int" use="required"/>
-        <xs:attribute name="numeroCuenta" type="xs:int" use="required"/>
+        <xs:attribute name="numeroCuenta" type="xs:string" use="required"/>
         <xs:attribute name="refCuentaAhorro" type="xs:IDREF" use="required"/>
       </xs:extension>
     </xs:complexContent>
@@ -56,7 +56,7 @@
     <xs:complexContent>
       <xs:extension base="tns:productoBancario">
         <xs:sequence/>
-        <xs:attribute name="numeroCuenta" type="xs:int" use="required"/>
+        <xs:attribute name="numeroCuenta" type="xs:string" use="required"/>
         <xs:attribute name="fechaApertura" type="xs:dateTime" use="required"/>
         <xs:attribute name="saldo" type="xs:double" use="required"/>
         <xs:attribute name="tipo" type="tns:tipoCuentaAhorro" use="required"/>
@@ -71,7 +71,10 @@
   </xs:complexType>
 
   <xs:complexType name="cliente">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="producto" type="tns:productoBancario" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="idUsuario" type="xs:ID" use="required"/>
     <xs:attribute name="nombre" type="xs:string" use="required"/>
     <xs:attribute name="apellido1" type="xs:string" use="required"/>
     <xs:attribute name="apellido2" type="xs:string"/>
